@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from '../shared/components/layout/Layout';
-import { Main } from '../pages/Main';
+import { Main } from '../pages/Main/Main';
 import { PodcastLayout } from '../modules/podcast/components/podcastLayout/PodcastLayout';
 
 export const router = createBrowserRouter([

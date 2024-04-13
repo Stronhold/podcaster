@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { styles } from './styles';
+import { styles } from './Main/styles';
 import { PodcastDetails } from '../modules/podcast/components/podcastDetails/PodcastDetails';
 import { Outlet } from 'react-router-dom';
 
