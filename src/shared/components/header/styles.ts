@@ -11,5 +11,6 @@ export const styles: Styles = {
   header: {
     flex: '1 0 auto',
     margin: 'auto 0',
+    textDecoration: 'none',
   },
 };
