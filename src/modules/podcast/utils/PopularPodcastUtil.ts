@@ -7,7 +7,6 @@ export class PopularPodtcasUtil extends Util {
   public static toViewModel(dto: BaseDTO): Array<Podcast> {
     const popularPodcasts =
       PopularPodtcasUtil.parseContent<PopularPodcastDTO>(dto);
-    console.log('asd: ', popularPodcasts.feed.entry[0]);
     return popularPodcasts.feed.entry.map((entry) => {
       return {
         artist: entry['im:artist'].label,
