@@ -20,6 +20,8 @@ export class EpisodesUtil extends Util {
           duration: `${minutes}:${remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}`,
           id: ep.trackId,
           title: ep.trackName,
+          description: ep.description,
+          podcastUrl: ep.previewUrl,
         };
       });
   }

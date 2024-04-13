@@ -3,4 +3,6 @@ export interface Episode {
   id: string;
   date: string;
   duration: string;
+  description: string;
+  podcastUrl: string;
 }
