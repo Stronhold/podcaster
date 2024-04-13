@@ -25,7 +25,11 @@ export const PodcastDetails = () => {
   return (
     <Card sx={styles.container}>
       <CardContent sx={styles.content}>
-        <Box component={'img'} src={podcastDetails?.podcastImage ?? ''} />
+        <Box
+          component={'img'}
+          sx={styles.image}
+          src={podcastDetails?.podcastImage ?? ''}
+        />
         <Divider />
         <Box>
           <Typography variant='h6'>{podcastDetails?.podcastName}</Typography>

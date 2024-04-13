@@ -19,6 +19,7 @@ export const styles: Style = {
     paddingTop: 4,
     position: 'relative',
     overflow: 'visible',
+    textDecoration: 'none',
   },
   content: {
     display: 'flex',
