@@ -5,17 +5,17 @@ import { useParams } from 'react-router-dom';
 import { Episode } from '../../modules/podcast/models/Episode';
 import { podcastEpisodesLoader } from '../../modules/podcast/loader/podcastEpisodesLoader';
 import { EpisodesTable } from '../../modules/podcast/components/episodesTable/EpisodesTable';
+import { useHeaderLoadingState } from '../../shared/hooks/useHeaderLoadingState';
 
 export const PodcastEpisodes = () => {
   const { id } = useParams();
   const [episodes, setEpisodes] = useState<Array<Episode>>([]);
-  // const context = useOutletContext();
+  const { updateState } = useHeaderLoadingState();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    podcastEpisodesLoader(id ?? '', setEpisodes, () => null);
-  }, [id]);
+    podcastEpisodesLoader(id ?? '', setEpisodes, updateState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Box sx={styles.container}>
