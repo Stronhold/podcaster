@@ -19,11 +19,9 @@ export class EpisodesService
 
   async getEpisodes(id: string): Promise<Array<Podcast> | unknown> {
     try {
-      console.log('get episodes');
       const response: BaseDTO = await this.get(
         apiRoutes.getPodcastEpisodes(id),
       );
-      console.log('response: ', response);
       return EpisodesUtil.toViewModel(response);
     } catch (err) {
       console.error('error fetching episodes: ', err);

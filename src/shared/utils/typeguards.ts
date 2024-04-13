@@ -9,7 +9,7 @@ export const isPodcast = (podcast: any): podcast is Podcast =>
   'summary' in podcast &&
   'artist' in podcast;
 
-const isEpisode = (episode: any): episode is Episode =>
+export const isEpisode = (episode: any): episode is Episode =>
   'title' in episode &&
   'id' in episode &&
   'date' in episode &&

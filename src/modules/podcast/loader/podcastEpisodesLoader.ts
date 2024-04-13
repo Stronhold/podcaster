@@ -8,7 +8,6 @@ export const podcastEpisodesLoader = async (
   setLoading: (load: boolean) => void,
 ) => {
   if (!id) throw Error('not id provided');
-  console.log('getting things');
   setLoading(true);
   const episodesService = new EpisodesService();
   const episodes = await episodesService.getEpisodes(id);
