@@ -10,6 +10,7 @@ export class EpisodesUtil extends Util {
     return episodes.results
       .filter((ep) => ep.kind === 'podcast-episode')
       .map((ep) => {
+        console.log('desc: ', ep.description);
         const seconds = ep.trackTimeMillis / 1000;
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = Math.floor(seconds % 60);
@@ -20,6 +21,8 @@ export class EpisodesUtil extends Util {
           duration: `${minutes}:${remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}`,
           id: ep.trackId,
           title: ep.trackName,
+          description: ep.description,
+          podcastUrl: ep.previewUrl,
         };
       });
   }
