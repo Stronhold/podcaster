@@ -1,16 +1,16 @@
-import { isPodcastDetail } from '../../../shared/utils/typeguards';
-import { PodcastDetail } from '../models/PodcastDetails';
+import { isPodcast } from '../../../shared/utils/typeguards';
+import { Podcast } from '../models/Podcast';
 import { PodCastDetailService } from '../services/podCastDetailService';
 
 export const podcastDetailsLoader = async (
   id: string,
-  setPodcast: (podcast: PodcastDetail) => void,
+  setPodcast: (podcast: Podcast) => void,
   setLoading: (load: boolean) => void,
 ) => {
   if (!id) throw Error('not id provided');
   setLoading(true);
   const podcastDetailService = new PodCastDetailService();
   const podcast = await podcastDetailService.getPodcastDetails(id);
-  if (isPodcastDetail(podcast)) setPodcast(podcast);
+  if (isPodcast(podcast)) setPodcast(podcast);
   setLoading(false);
 };

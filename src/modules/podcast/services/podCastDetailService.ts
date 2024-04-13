@@ -1,26 +1,30 @@
-import { apiRoutes } from '../../../config/apiRoutes';
-import { DAY_IN_MILLIS, CacheKeys } from '../../../config/consts';
 import { BaseAPI } from '../../../shared/infra/services/BaseAPI';
-import { BaseDTO } from '../dtos/baseDTO';
-import { PodcastDetail } from '../models/PodcastDetails';
-import { PodcastDetailsUtil } from '../utils/PodcastDetailsUtil';
+import { isPodcastArray } from '../../../shared/utils/typeguards';
+import { Podcast } from '../models/Podcast';
+import { IPodcastService, PodCastService } from './podCastService';
 
 export interface IPodcastDetailService {
-  getPodcastDetails(id: string): Promise<PodcastDetail | unknown>;
+  getPodcastDetails(id: string): Promise<Podcast | unknown>;
 }
 
 export class PodCastDetailService
   extends BaseAPI
   implements IPodcastDetailService
 {
+  private podcastService: IPodcastService;
   constructor() {
-    super(CacheKeys.PodcastDetails, DAY_IN_MILLIS);
+    super();
+    this.podcastService = new PodCastService();
   }
 
-  async getPodcastDetails(id: string): Promise<PodcastDetail | unknown> {
+  async getPodcastDetails(id: string): Promise<Podcast | unknown> {
     try {
-      const response: BaseDTO = await this.get(apiRoutes.getPodCastDetails(id));
-      return PodcastDetailsUtil.toViewModel(response);
+      const response = await this.podcastService.getPodcasts();
+      if (isPodcastArray(response)) {
+        const podcast = response.find((r) => r.id === id);
+        if (!podcast) throw Error('No podcast found');
+        return podcast;
+      }
     } catch (err) {
       console.error('error fetching podcast details: ', err);
       return err;
