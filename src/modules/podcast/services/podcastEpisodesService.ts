@@ -23,6 +23,7 @@ export class EpisodesService
       const response: BaseDTO = await this.get(
         apiRoutes.getPodcastEpisodes(id),
       );
+      console.log('response: ', response);
       return EpisodesUtil.toViewModel(response);
     } catch (err) {
       console.error('error fetching episodes: ', err);

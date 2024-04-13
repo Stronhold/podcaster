@@ -9,17 +9,14 @@ import {
   Link as MUILink,
 } from '@mui/material';
 import { useOutletContext, useParams } from 'react-router-dom';
-import { PodcastDetail } from '../../models/PodcastDetails';
 import { styles } from './styles';
 import { Link } from 'react-router-dom';
+import { Podcast } from '../../models/Podcast';
 
 export const PodcastDetails = () => {
   const { id } = useParams();
-  const [podcastDetails, setPodcastDetails] = useState<PodcastDetail | null>(
-    null,
-  );
+  const [podcastDetails, setPodcastDetails] = useState<Podcast | null>(null);
   const context = useOutletContext();
-  console.log('contex: ', context);
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -38,7 +35,7 @@ export const PodcastDetails = () => {
         <MUILink to={url} component={Link} sx={styles.imageLink}>
           <Box
             component={'img'}
-            src={podcastDetails?.podcastImage ?? ''}
+            src={podcastDetails?.image ?? ''}
             sx={styles.image}
           />
         </MUILink>
@@ -50,7 +47,7 @@ export const PodcastDetails = () => {
             component={Link}
             to={url}
           >
-            {podcastDetails?.podcastName}
+            {podcastDetails?.title}
           </Typography>
           <Typography
             variant='body2'
@@ -58,17 +55,16 @@ export const PodcastDetails = () => {
             component={Link}
             to={url}
           >
-            by {podcastDetails?.artistName}
+            by {podcastDetails?.artist}
           </Typography>
         </Box>
-        {podcastDetails?.summary && (
-          <Box>
-            <Typography>Summary</Typography>
-            <Typography sx={styles.description}>
-              {podcastDetails?.summary}
-            </Typography>
-          </Box>
-        )}
+        <Divider />
+        <Box>
+          <Typography variant='h6'>Summary</Typography>
+          <Typography variant='body2' sx={styles.description}>
+            {podcastDetails?.summary}
+          </Typography>
+        </Box>
       </CardContent>
     </Card>
   );
