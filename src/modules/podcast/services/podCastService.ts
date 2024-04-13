@@ -1,22 +1,22 @@
-import { API_ROUTES } from '../../../config/apiRoutes';
-import { TOP_PODCASTS_KEY } from '../../../config/consts';
+import { apiRoutes } from '../../../config/apiRoutes';
+import { DAY_IN_MILLIS, CacheKeys } from '../../../config/consts';
 import { BaseAPI } from '../../../shared/infra/services/BaseAPI';
 import { BaseDTO } from '../dtos/baseDTO';
 import { Podcast } from '../models/Podcast';
 import { PopularPodtcasUtil } from '../utils/PopularPodcastUtil';
 
-export interface ICommentService {
+export interface IPodcastService {
   getPodcasts(): Promise<Array<Podcast> | unknown>;
 }
 
-export class PodCastService extends BaseAPI implements ICommentService {
+export class PodCastService extends BaseAPI implements IPodcastService {
   constructor() {
-    super(TOP_PODCASTS_KEY, 24 * 60 * 60 * 1000);
+    super(CacheKeys.TopPodcasts, DAY_IN_MILLIS);
   }
 
   async getPodcasts(): Promise<Array<Podcast> | unknown> {
     try {
-      const response: BaseDTO = await this.get(API_ROUTES.TOP_PODCASTS);
+      const response: BaseDTO = await this.get(apiRoutes.getTopPodcastsApi());
       return PopularPodtcasUtil.toViewModel(response);
     } catch (err) {
       console.error('error fetching podcasts: ', err);

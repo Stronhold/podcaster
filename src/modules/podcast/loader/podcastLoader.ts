@@ -1,3 +1,4 @@
+import { isPodcastArray } from '../../../shared/utils/typeguards';
 import { Podcast } from '../models/Podcast';
 import { PodCastService } from '../services/podCastService';
 
@@ -8,6 +9,6 @@ export const podcastLoader = async (
   setLoading(true);
   const podCastService = new PodCastService();
   const podcasts = await podCastService.getPodcasts();
-  if (Array.isArray(podcasts)) setPodcasts(podcasts);
+  if (isPodcastArray(podcasts)) setPodcasts(podcasts);
   setLoading(false);
 };
