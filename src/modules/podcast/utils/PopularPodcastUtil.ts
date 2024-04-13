@@ -14,6 +14,7 @@ export class PopularPodtcasUtil {
       image: entry['im:image'].length > 0 ? entry['im:image'][0].label : '',
       summary: entry.summary.label,
       title: entry.title.label,
+      id: entry.id.attributes['im:id'],
     }));
   }
 }

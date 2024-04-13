@@ -3,4 +3,5 @@ export interface Podcast {
   image: string;
   summary: string;
   artist: string;
+  id: string;
 }

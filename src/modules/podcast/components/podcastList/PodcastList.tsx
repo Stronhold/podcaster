@@ -10,7 +10,7 @@ export const PodcastList = ({ podcasts }: Props) => {
   return (
     <Box sx={styles.container}>
       {podcasts.map((p) => (
-        <PodcastCard podcast={p} />
+        <PodcastCard podcast={p} key={p.id} />
       ))}
     </Box>
   );
