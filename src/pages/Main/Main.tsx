@@ -1,11 +1,11 @@
 import { Box } from '@mui/material';
-import { PodcastFilter } from '../modules/podcast/components/podcastFilter/PodcastFilter';
+import { PodcastFilter } from '../../modules/podcast/components/podcastFilter/PodcastFilter';
 import { useEffect, useState } from 'react';
-import { Podcast } from '../modules/podcast/models/Podcast';
+import { Podcast } from '../../modules/podcast/models/Podcast';
 import { styles } from './styles';
-import { podcastLoader } from '../modules/podcast/loader/podcastLoader';
+import { podcastLoader } from '../../modules/podcast/loader/podcastLoader';
 import { useOutletContext } from 'react-router-dom';
-import { PodcastList } from '../modules/podcast/components/podcastList/PodcastList';
+import { PodcastList } from '../../modules/podcast/components/podcastList/PodcastList';
 
 export const Main = () => {
   const [filter, setFilterText] = useState('');

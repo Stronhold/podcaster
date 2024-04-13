@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { styles } from './styles';
-import { PodcastDetails } from '../modules/podcast/components/podcastDetails/PodcastDetails';
 import { Outlet } from 'react-router-dom';
+import { PodcastDetails } from '../../modules/podcast/components/podcastDetails/PodcastDetails';
 
 export const PodcastDetail = () => {
   return (

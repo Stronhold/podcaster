@@ -8,7 +8,6 @@ export class PopularPodtcasUtil extends Util {
     const popularPodcasts =
       PopularPodtcasUtil.parseContent<PopularPodcastDTO>(dto);
     return popularPodcasts.feed.entry.map((entry) => {
-      console.log('entry: ', entry);
       return {
         artist: entry['im:artist'].label,
         image: entry['im:image'].length > 0 ? entry['im:image'][0].label : '',
