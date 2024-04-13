@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from '../shared/layout/Layout';
-import { podcastLoader } from '../modules/podcast/loader/loadPodcasts';
+import { Layout } from '../shared/components/layout/Layout';
+import { Main } from '../pages/Main';
 
 export const router = createBrowserRouter([
   {
@@ -9,8 +9,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <span>hey</span>,
-        loader: podcastLoader,
+        element: <Main />,
         id: 'home',
       },
     ],

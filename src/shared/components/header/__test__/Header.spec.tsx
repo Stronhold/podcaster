@@ -3,8 +3,8 @@ import { render } from '../../../test/test-utils';
 import { Header } from '../Header';
 
 describe('header', () => {
-  it('should render app name', () => {
-    const { getByText } = render(<Header />);
+  it.each([true, false])('should render app name', (loading) => {
+    const { getByText } = render(<Header loading={loading} />);
     expect(getByText('Podcaster')).toBeDefined();
   });
 });
