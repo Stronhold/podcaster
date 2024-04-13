@@ -18,7 +18,7 @@ export const Header = ({ loading }: Props) => {
         >
           Podcaster
         </Typography>
-        {loading && <CircularProgress />}
+        {loading && <CircularProgress size={30} />}
       </CardContent>
     </Card>
   );

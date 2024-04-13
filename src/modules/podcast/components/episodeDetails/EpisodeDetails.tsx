@@ -5,24 +5,22 @@ import { episodeDetailLoader } from '../../loader/episodeDetailLoader';
 import { Episode } from '../../models/Episode';
 import { styles } from './styles';
 import { isHTML } from '../../../../shared/utils/isHtml';
+import { useHeaderLoadingState } from '../../../../shared/hooks/useHeaderLoadingState';
 
 export const EpisodeDetails = () => {
   const { id, episodeId } = useParams();
   const [episodeDetails, setEpisodeDetails] = useState<Episode | null>(null);
+  const { updateState } = useHeaderLoadingState();
+
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // if (context && context.setLoading) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     episodeDetailLoader(
       id ?? '',
       episodeId ?? '',
       setEpisodeDetails,
-      () => null,
+      updateState,
     );
-    // }
-  }, [episodeId, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!episodeDetails) return null;
   return (
