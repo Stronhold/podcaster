@@ -8,24 +8,21 @@ import {
   Typography,
   Link as MUILink,
 } from '@mui/material';
-import { useOutletContext, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { styles } from './styles';
 import { Link } from 'react-router-dom';
 import { Podcast } from '../../models/Podcast';
+import { useHeaderLoadingState } from '../../../../shared/hooks/useHeaderLoadingState';
 
 export const PodcastDetails = () => {
   const { id } = useParams();
   const [podcastDetails, setPodcastDetails] = useState<Podcast | null>(null);
-  const context = useOutletContext();
+  const { updateState } = useHeaderLoadingState();
+
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (context && context.setLoading) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      podcastDetailsLoader(id ?? '', setPodcastDetails, context.setLoading);
-    }
-  }, [id, context]);
+    podcastDetailsLoader(id ?? '', setPodcastDetails, updateState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const url = `/podcast/${id}`;
 

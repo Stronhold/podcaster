@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react';
 import { Podcast } from '../../modules/podcast/models/Podcast';
 import { styles } from './styles';
 import { podcastLoader } from '../../modules/podcast/loader/podcastLoader';
-import { useOutletContext } from 'react-router-dom';
 import { PodcastList } from '../../modules/podcast/components/podcastList/PodcastList';
+import { useHeaderLoadingState } from '../../shared/hooks/useHeaderLoadingState';
 
 export const Main = () => {
   const [filter, setFilterText] = useState('');
   const [podcasts, setPodcasts] = useState<Array<Podcast>>([]);
-  const { setLoading }: { setLoading: (loading: boolean) => void } =
-    useOutletContext();
+  const { updateState } = useHeaderLoadingState();
 
   useEffect(() => {
-    podcastLoader(setPodcasts, setLoading);
-  }, [setLoading]);
+    podcastLoader(setPodcasts, updateState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filteredPodcasts = podcasts.filter(
     (p) =>
