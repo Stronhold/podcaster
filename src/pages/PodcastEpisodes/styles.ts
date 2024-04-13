@@ -7,6 +7,7 @@ export const styles: Style = {
   container: {
     display: 'flex',
     gap: 2,
-    flexDirection: 'row',
+    flexDirection: 'column',
+    flex: '1',
   },
 };

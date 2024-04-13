@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { podcastDetailsLoader } from '../../loader/podcastDetailsLoader';
-import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Typography,
+  Link as MUILink,
+} from '@mui/material';
 import { useOutletContext, useParams } from 'react-router-dom';
 import { PodcastDetail } from '../../models/PodcastDetails';
 import { styles } from './styles';
+import { Link } from 'react-router-dom';
 
 export const PodcastDetails = () => {
   const { id } = useParams();
@@ -22,18 +30,34 @@ export const PodcastDetails = () => {
     }
   }, [id, context]);
 
+  const url = `/podcast/${id}`;
+
   return (
     <Card sx={styles.container}>
       <CardContent sx={styles.content}>
-        <Box
-          component={'img'}
-          sx={styles.image}
-          src={podcastDetails?.podcastImage ?? ''}
-        />
+        <MUILink to={url} component={Link} sx={styles.imageLink}>
+          <Box
+            component={'img'}
+            src={podcastDetails?.podcastImage ?? ''}
+            sx={styles.image}
+          />
+        </MUILink>
         <Divider />
-        <Box>
-          <Typography variant='h6'>{podcastDetails?.podcastName}</Typography>
-          <Typography variant='body2' sx={styles.description}>
+        <Box display='flex' flexDirection={'column'}>
+          <Typography
+            variant='h6'
+            sx={styles.podcastName}
+            component={Link}
+            to={url}
+          >
+            {podcastDetails?.podcastName}
+          </Typography>
+          <Typography
+            variant='body2'
+            sx={styles.description}
+            component={Link}
+            to={url}
+          >
             by {podcastDetails?.artistName}
           </Typography>
         </Box>
