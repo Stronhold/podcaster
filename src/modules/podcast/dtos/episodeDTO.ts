@@ -3,4 +3,5 @@ export interface EpisodeDTO {
   trackName: string;
   trackId: string;
   trackTimeMillis: number;
+  kind: 'podcast' | 'podcast-episode';
 }
