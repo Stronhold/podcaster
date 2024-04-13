@@ -13,7 +13,7 @@ export class PopularPodtcasUtil {
       artist: entry['im:artist'].label,
       image: entry['im:image'].length > 0 ? entry['im:image'][0].label : '',
       summary: entry.summary.label,
-      title: entry.summary.label,
+      title: entry.title.label,
     }));
   }
 }

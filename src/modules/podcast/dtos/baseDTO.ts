@@ -9,4 +9,5 @@ interface Status {
 export interface BaseDTO {
   contents: string;
   status: Status;
+  date?: number;
 }

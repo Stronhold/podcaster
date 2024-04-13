@@ -1,12 +1,17 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material';
+import { styles } from './styles';
 
-export const Header = () => {
+interface Props {
+  loading: boolean;
+}
+export const Header = ({ loading }: Props) => {
   return (
     <Card>
-      <CardContent>
-        <Typography variant='h5' color={'primary'}>
+      <CardContent sx={styles.container}>
+        <Typography variant='h5' color={'primary'} sx={styles.header}>
           Podcaster
         </Typography>
+        {loading && <CircularProgress />}
       </CardContent>
     </Card>
   );
