@@ -20,8 +20,8 @@ export const PodcastList = ({ podcasts }: Props) => {
       ))}
       {Array(extraEmptyCards)
         .fill(1)
-        .map(() => (
-          <EmptyPodcastCard />
+        .map((_, index) => (
+          <EmptyPodcastCard key={index} />
         ))}
     </Box>
   );
