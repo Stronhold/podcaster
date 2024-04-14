@@ -13,7 +13,12 @@ export const PodcastFilter = ({
 }: Props) => {
   return (
     <Box sx={styles.filterLine}>
-      <Chip label={availableResults} color='primary' sx={styles.chip} />
+      <Chip
+        label={availableResults}
+        color='primary'
+        aria-label={`available podcasts ${availableResults}`}
+        sx={styles.chip}
+      />
       <TextField
         variant='outlined'
         label='Filter podcasts...'

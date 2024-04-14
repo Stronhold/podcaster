@@ -6,7 +6,10 @@ import { theme } from './shared/infra/ui/theme.ts';
 import { ThemeProvider } from '@mui/material';
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
+  if (
+    import.meta.env.NODE_ENV !== 'development' &&
+    !import.meta.env.VITE_MOCK
+  ) {
     return;
   }
 
