@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material';
 
 async function enableMocking() {
   if (
-    import.meta.env.NODE_ENV !== 'development' &&
+    import.meta.env.NODE_ENV !== 'development' ||
     !import.meta.env.VITE_MOCK
   ) {
     return;
