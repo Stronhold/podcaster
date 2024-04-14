@@ -10,7 +10,7 @@ export abstract class BaseAPI {
     if (cacheName && cacheTime) this.cache = new CacheAPI(cacheName, cacheTime);
   }
 
-  public getRequestUrl(url: string): string {
+  private getRequestUrl(url: string): string {
     return `${this.baseUrl}${encodeURIComponent(url)}`;
   }
 
