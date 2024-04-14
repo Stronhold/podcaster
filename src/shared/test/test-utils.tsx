@@ -29,9 +29,15 @@ const AllTheProviders = <T,>({
   );
 };
 
-const customRender = (ui: ReactElement, options?: CustomRenderOptions) =>
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<CustomRenderOptions, 'context'>,
+) =>
   render(
-    <AllTheProviders route={options?.route} context={options?.context}>
+    <AllTheProviders
+      route={options?.route}
+      context={{ updateState: () => null }}
+    >
       {ui}
     </AllTheProviders>,
   );
